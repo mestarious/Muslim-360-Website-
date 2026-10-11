@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Muslim 360 — Your Daily Islamic Companion</title>
+  <meta name="description" content="Muslim 360 is your complete daily companion for prayer, Qur'an, and remembrance — Prayer times, Qibla, Quran, Hadith, Dhikr, Zakat, Hajj & Umrah guides, and more. Free on Android & iOS." />
+  <meta name="theme-color" content="#059B52" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Muslim 360 — Your Daily Islamic Companion" />
+  <meta property="og:description" content="Prayer times, Qibla, Quran, Hadith, Dhikr, Zakat and 15+ more features in one beautiful app." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ░░░ BOOT SPLASH ░░░ -->
+  <div id="boot">
+    <div class="boot-mark">
+      <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+        <path d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
+        <path d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
+      </svg>
+    </div>
+    <div class="boot-title">Muslim <span>360</span></div>
+    <div class="boot-spin"></div>
+  </div>
+
+  <!-- ░░░ NAV ░░░ -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top" aria-label="Muslim 360 home">
+      <span class="nav-logo">
+        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+          <path d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
+          <path d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
+        </svg>
+      </span>
+      <span class="nav-name">MUSLIM <b>360</b></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features" data-i18n="nav_features">Features</a>
+      <a href="#prayer" data-i18n="nav_prayer">Prayer</a>
+      <a href="#quran" data-i18n="nav_quran">Quran</a>
+      <a href="#download" data-i18n="nav_download">Download</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <span class="lang-en">EN</span><span class="lang-sep">/</span><span class="lang-ar">عر</span>
+      </button>
+      <a class="btn btn-sm" href="#download" data-i18n="nav_get">Get the app</a>
+    </div>
+  </header>
+
+  <!-- ░░░ HERO ░░░ -->
+  <section class="hero" id="top">
+    <canvas id="scene"></canvas>
+    <div class="hero-glow"></div>
+
+    <div class="hero-inner">
+      <div class="hero-badge" data-reveal>
+        <span class="dot"></span>
+        <span data-i18n="hero_badge">20+ Islamic tools · Offline ready · Free</span>
+      </div>
+
+      <h1 class="hero-title" data-reveal>
+        <span data-i18n="hero_title_1">Your whole deen,</span><br />
+        <span class="grad" data-i18n="hero_title_2">in one place.</span>
+      </h1>
+
+      <p class="hero-sub" data-reveal data-i18n="hero_sub">
+        Muslim 360 is your daily companion for prayer, Qur'an and remembrance —
+        prayer times, Qibla, the full Quran &amp; Hadith, dhikr, Zakat, Hajj &amp; Umrah guides,
+        and more. Beautifully simple. Fully bilingual. Works offline.
+      </p>
+
+      <div class="hero-cta" data-reveal>
+        <a class="store-badge" href="#download" aria-label="Get it on Google Play">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3.6 2.3 13 11.7l2.6-2.6L5.5 3.3a1.9 1.9 0 0 0-1.9-1ZM2.9 3.4A1.9 1.9 0 0 0 2.4 5v14a1.9 1.9 0 0 0 .5 1.3l8.1-8.1-8.1-8.8Zm14 6.5 2.9 1.7c1.4.8 1.4 2.3 0 3.1l-2.9 1.7-2.9-2.9 2.9-2.7ZM13 12.6l-8.4 8.5a1.9 1.9 0 0 0 1.9-.2l9.5-5.5L13 12.6Z"/></svg>
+          <span><small data-i18n="badge_get">Get it on</small><b>Google Play</b></span>
+        </a>
+        <a class="store-badge" href="#download" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16.5 1.6c.1 1-.3 2-.9 2.8-.7.8-1.8 1.4-2.8 1.3-.1-1 .4-2 1-2.7.7-.8 1.9-1.4 2.7-1.4ZM19 17.1c-.5 1.2-.8 1.7-1.5 2.8-.9 1.5-2.2 3.3-3.8 3.3-1.4 0-1.8-.9-3.7-.9s-2.3.9-3.7.9c-1.6 0-2.8-1.6-3.7-3.1C-.6 15.6-.9 10 1.4 7a5.3 5.3 0 0 1 4.3-2.6c1.6 0 2.6 1 3.9 1s2.1-1 3.9-1c1.3 0 2.7.7 3.7 2-3.2 1.8-2.7 6.4.9 7.7Z"/></svg>
+          <span><small data-i18n="badge_dl">Download on the</small><b>App Store</b></span>
+        </a>
+      </div>
+
+      <div class="hero-meta" data-reveal>
+        <div><b>114</b><span data-i18n="meta_surahs">Surahs offline</span></div>
+        <div><b>99</b><span data-i18n="meta_names">Names of Allah</span></div>
+        <div><b>5</b><span data-i18n="meta_prayers">Daily prayer alerts</span></div>
+        <div><b>2</b><span data-i18n="meta_lang">Languages · AR/EN</span></div>
+      </div>
+    </div>
+
+    <a class="scroll-hint" href="#features" aria-label="Scroll to features">
+      <span data-i18n="scroll">Explore</span>
+      <i></i>
+    </a>
+  </section>
+
+  <!-- ░░░ FEATURES ░░░ -->
+  <section class="section" id="features">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow" data-i18n="feat_eyebrow">Everything a Muslim needs</p>
+      <h2 data-i18n="feat_title">One app. Twenty tools for your day.</h2>
+      <p class="section-lead" data-i18n="feat_lead">
+        From the first adhan to the last dhikr — every essential, crafted with care and ready offline.
+      </p>
+    </div>
+
+    <div class="feat-grid" id="featGrid"><!-- cards injected by app.js --></div>
+  </section>
+
+  <!-- ░░░ PRAYER SHOWCASE ░░░ -->
+  <section class="showcase" id="prayer">
+    <div class="showcase-copy" data-reveal>
+      <p class="eyebrow" data-i18n="pray_eyebrow">Never miss a prayer</p>
+      <h2 data-i18n="pray_title">Precise prayer times, right where you are.</h2>
+      <p data-i18n="pray_body">
+        Accurate adhan times calculated from your exact location, with gentle reminders before each salah.
+        A live Qibla compass points you to the Kaaba, and the Salah tracker keeps your daily record.
+      </p>
+      <ul class="ticks">
+        <li data-i18n="pray_t1">Automatic location-based prayer times</li>
+        <li data-i18n="pray_t2">Adhan &amp; pre-prayer notifications</li>
+        <li data-i18n="pray_t3">Live Qibla compass</li>
+        <li data-i18n="pray_t4">Daily Salah tracker &amp; streaks</li>
+      </ul>
+    </div>
+
+    <div class="phone-wrap" data-reveal>
+      <div class="phone" data-tilt>
+        <div class="phone-screen phone-prayer">
+          <div class="pp-top">
+            <span>🕌 Prayer Times</span><span class="pp-loc">📍 Makkah</span>
+          </div>
+          <div class="pp-next">
+            <small>NEXT · ASR IN</small>
+            <b>1:24:08</b>
+          </div>
+          <div class="pp-list">
+            <div><span>Fajr</span><span>05:12</span></div>
+            <div><span>Dhuhr</span><span>12:28</span></div>
+            <div class="on"><span>Asr</span><span>15:47</span></div>
+            <div><span>Maghrib</span><span>18:31</span></div>
+            <div><span>Isha</span><span>20:01</span></div>
+          </div>
+        </div>
+        <div class="phone-notch"></div>
+      </div>
+      <div class="phone-shadow"></div>
+    </div>
+  </section>
+
+  <!-- ░░░ QURAN SHOWCASE ░░░ -->
+  <section class="showcase reverse" id="quran">
+    <div class="showcase-copy" data-reveal>
+      <p class="eyebrow" data-i18n="qur_eyebrow">Read. Listen. Memorise.</p>
+      <h2 data-i18n="qur_title">The complete Qur'an, online &amp; offline.</h2>
+      <p data-i18n="qur_body">
+        All 114 surahs available offline, plus online recitations, Warsh narration and tafsir.
+        Track your Hifz across every surah, and explore a full Hadith library of nine collections.
+      </p>
+      <ul class="ticks">
+        <li data-i18n="qur_t1">114 surahs · works fully offline</li>
+        <li data-i18n="qur_t2">Reciters, Warsh &amp; tafsir online</li>
+        <li data-i18n="qur_t3">Hifz tracker for memorisation</li>
+        <li data-i18n="qur_t4">9 Hadith collections — read or download</li>
+      </ul>
+    </div>
+
+    <div class="phone-wrap" data-reveal>
+      <div class="phone" data-tilt>
+        <div class="phone-screen phone-quran">
+          <div class="pq-head">
+            <span>٢ · Al-Baqarah</span><span>📖</span>
+          </div>
+          <div class="pq-bism">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+          <div class="pq-ayah">الٓمٓ ۚ ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ</div>
+          <div class="pq-ayah dim">ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ</div>
+          <div class="pq-bar"><i style="width:62%"></i></div>
+          <small class="pq-sub">Hifz progress · 62%</small>
+        </div>
+        <div class="phone-notch"></div>
+      </div>
+      <div class="phone-shadow"></div>
+    </div>
+  </section>
+
+  <!-- ░░░ STATS BAND ░░░ -->
+  <section class="stats" id="stats">
+    <div class="stat" data-reveal><b data-count="20">0</b><span data-i18n="stat_tools">Islamic tools</span></div>
+    <div class="stat" data-reveal><b data-count="114">0</b><span data-i18n="stat_surahs">Surahs offline</span></div>
+    <div class="stat" data-reveal><b data-count="9">0</b><span data-i18n="stat_hadith">Hadith collections</span></div>
+    <div class="stat" data-reveal><b data-count="100" data-suffix="%">0</b><span data-i18n="stat_free">Free &amp; offline</span></div>
+  </section>
+
+  <!-- ░░░ BILINGUAL ░░░ -->
+  <section class="bilingual" data-reveal>
+    <div class="bi-inner">
+      <h2 data-i18n="bi_title">Built for everyone — <span class="grad">English &amp; العربية</span></h2>
+      <p data-i18n="bi_body">
+        Switch the whole experience between English and Arabic with full right-to-left support.
+        Every screen, every word, carefully localised.
+      </p>
+      <button class="btn" id="langToggle2" data-i18n="bi_btn">Try Arabic mode</button>
+    </div>
+  </section>
+
+  <!-- ░░░ DOWNLOAD / CTA ░░░ -->
+  <section class="download" id="download">
+    <div class="dl-glow"></div>
+    <div class="dl-inner" data-reveal>
+      <div class="dl-mark">
+        <svg viewBox="0 0 64 64" width="70" height="70" aria-hidden="true">
+          <path d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
+          <path d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
+        </svg>
+      </div>
+      <h2 data-i18n="dl_title">Start your day with Muslim 360.</h2>
+      <p data-i18n="dl_body">Free to download. No sign-up required. Your deen, organised.</p>
+      <div class="hero-cta center">
+        <a class="store-badge" href="#" aria-label="Get it on Google Play">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3.6 2.3 13 11.7l2.6-2.6L5.5 3.3a1.9 1.9 0 0 0-1.9-1ZM2.9 3.4A1.9 1.9 0 0 0 2.4 5v14a1.9 1.9 0 0 0 .5 1.3l8.1-8.1-8.1-8.8Zm14 6.5 2.9 1.7c1.4.8 1.4 2.3 0 3.1l-2.9 1.7-2.9-2.9 2.9-2.7ZM13 12.6l-8.4 8.5a1.9 1.9 0 0 0 1.9-.2l9.5-5.5L13 12.6Z"/></svg>
+          <span><small data-i18n="badge_get">Get it on</small><b>Google Play</b></span>
+        </a>
+        <a class="store-badge" href="#" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16.5 1.6c.1 1-.3 2-.9 2.8-.7.8-1.8 1.4-2.8 1.3-.1-1 .4-2 1-2.7.7-.8 1.9-1.4 2.7-1.4ZM19 17.1c-.5 1.2-.8 1.7-1.5 2.8-.9 1.5-2.2 3.3-3.8 3.3-1.4 0-1.8-.9-3.7-.9s-2.3.9-3.7.9c-1.6 0-2.8-1.6-3.7-3.1C-.6 15.6-.9 10 1.4 7a5.3 5.3 0 0 1 4.3-2.6c1.6 0 2.6 1 3.9 1s2.1-1 3.9-1c1.3 0 2.7.7 3.7 2-3.2 1.8-2.7 6.4.9 7.7Z"/></svg>
+          <span><small data-i18n="badge_dl">Download on the</small><b>App Store</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer class="footer">
+    <div class="foot-brand">
+      <span class="nav-logo">
+        <svg viewBox="0 0 64 64" width="24" height="24" aria-hidden="true">
+          <path d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
+          <path d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
+        </svg>
+      </span>
+      <span class="nav-name">MUSLIM <b>360</b></span>
+    </div>
+    <p class="foot-tag" data-i18n="foot_tag">Your daily companion for prayer, Qur'an and remembrance.</p>
+    <p class="foot-copy">© <span id="year"></span> Muslim 360 · <span data-i18n="foot_made">Made with ihsan</span></p>
+  </footer>
+
+  <script src="assets/js/vendor/three.min.js"></script>
+  <script src="assets/js/scene.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
