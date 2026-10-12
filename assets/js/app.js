@@ -227,22 +227,53 @@
     'Profile': '<div class="ms"><div class="ms-hd">👤 My Profile<span>Level 12 · Muhsin</span></div><div style="text-align:center;margin-bottom:14px"><div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(5,155,82,.4),rgba(5,155,82,.1));border:2px solid rgba(5,155,82,.5);font-size:28px;display:grid;place-items:center;margin:0 auto 8px">🌿</div><b style="color:#fff;font-size:16px">Ahmad Al-Muslim</b><div style="font-size:11px;color:var(--green);margin-top:2px">⭐ Level 12 · Muhsin</div></div><div class="ms-green-card" style="display:flex;justify-content:space-around;text-align:center;gap:10px"><div><b style="color:#fff;font-size:20px">🔥 12</b><div style="font-size:10px;color:#9fd9b8">Day streak</div></div><div><b style="color:#fff;font-size:20px">94%</b><div style="font-size:10px;color:#9fd9b8">Salah rate</div></div><div><b style="color:#fff;font-size:20px">21</b><div style="font-size:10px;color:#9fd9b8">Habits done</div></div></div></div>'
   };
 
-  /* ---- app tab switcher ---- */
+  /* ---- app tab switcher with auto-cycle ---- */
   (function () {
     var atpScreen = document.getElementById('atpScreen');
     var atpSwitcher = document.getElementById('atpSwitcher');
     if (!atpScreen || !atpSwitcher) return;
-    function setTab(name) {
-      atpScreen.innerHTML = TAB_SCREENS[name] || '';
+
+    var tabs = ['Muslim', 'Alarm', 'Journal', 'Block', 'Profile'];
+    var current = 0;
+    var autoTimer = null;
+
+    function setTab(name, fromUser) {
+      atpScreen.style.opacity = '0';
+      atpScreen.style.transform = 'translateY(10px)';
+      setTimeout(function () {
+        atpScreen.innerHTML = TAB_SCREENS[name] || '';
+        atpScreen.style.opacity = '1';
+        atpScreen.style.transform = 'translateY(0)';
+      }, 180);
       atpSwitcher.querySelectorAll('.atp-btn').forEach(function (b) {
         b.classList.toggle('active', b.getAttribute('data-atp') === name);
       });
+      current = tabs.indexOf(name);
+      if (fromUser) { clearInterval(autoTimer); startAuto(); }
     }
+
+    function startAuto() {
+      autoTimer = setInterval(function () {
+        current = (current + 1) % tabs.length;
+        setTab(tabs[current], false);
+      }, 3000);
+    }
+
     atpSwitcher.addEventListener('click', function (e) {
       var btn = e.target.closest('.atp-btn');
-      if (btn) setTab(btn.getAttribute('data-atp'));
+      if (btn) setTab(btn.getAttribute('data-atp'), true);
     });
-    setTab('Muslim');
+
+    /* pause auto-cycle while user hovers over the phone */
+    var wrap = atpSwitcher.closest('.atp-wrap');
+    if (wrap) {
+      wrap.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
+      wrap.addEventListener('mouseleave', startAuto);
+    }
+
+    atpScreen.style.transition = 'opacity .18s ease, transform .18s ease';
+    setTab('Muslim', false);
+    startAuto();
   })();
 
   /* ---- feature modal ---- */
@@ -282,6 +313,38 @@
         });
       });
     });
+  })();
+
+  /* ---- hamburger menu ---- */
+  (function () {
+    var hamBtn = document.getElementById('hamBtn');
+    var hamMenu = document.getElementById('hamMenu');
+    var hamOverlay = document.getElementById('hamOverlay');
+    if (!hamBtn || !hamMenu) return;
+
+    function openMenu() {
+      hamBtn.classList.add('open');
+      hamBtn.setAttribute('aria-expanded', 'true');
+      hamMenu.classList.add('open');
+      hamMenu.setAttribute('aria-hidden', 'false');
+      if (hamOverlay) { hamOverlay.style.display = 'block'; requestAnimationFrame(function () { hamOverlay.classList.add('open'); }); }
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      hamBtn.classList.remove('open');
+      hamBtn.setAttribute('aria-expanded', 'false');
+      hamMenu.classList.remove('open');
+      hamMenu.setAttribute('aria-hidden', 'true');
+      if (hamOverlay) { hamOverlay.classList.remove('open'); setTimeout(function () { hamOverlay.style.display = ''; }, 320); }
+      document.body.style.overflow = '';
+    }
+
+    hamBtn.addEventListener('click', function () {
+      hamMenu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    if (hamOverlay) hamOverlay.addEventListener('click', closeMenu);
+    hamMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
   })();
 
   /* ---- year + boot splash ---- */

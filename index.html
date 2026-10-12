@@ -34,6 +34,13 @@
 
   <!-- ░░░ NAV ░░░ -->
   <header class="nav" id="nav">
+
+    <!-- Hamburger button (always visible, left) -->
+    <button class="ham-btn" id="hamBtn" aria-label="Open menu" aria-expanded="false" aria-controls="hamMenu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Brand — centered via absolute positioning on mobile -->
     <a class="nav-brand" href="#top" aria-label="Muslim 360 home">
       <span class="nav-logo">
         <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
@@ -44,6 +51,7 @@
       <span class="nav-name">MUSLIM <b>360</b></span>
     </a>
 
+    <!-- Desktop nav links (hidden on mobile — inside hamburger instead) -->
     <nav class="nav-links" aria-label="Primary">
       <a href="#features" data-i18n="nav_features">Features</a>
       <a href="#prayer" data-i18n="nav_prayer">Prayer</a>
@@ -51,12 +59,26 @@
       <a href="#download" data-i18n="nav_download">Download</a>
     </nav>
 
+    <!-- Right actions -->
     <div class="nav-actions">
       <button class="lang-toggle" id="langToggle" aria-label="Switch language">
         <span class="lang-en">EN</span><span class="lang-sep">/</span><span class="lang-ar">عر</span>
       </button>
-      <a class="btn btn-sm" href="#download" data-i18n="nav_get">Get the app</a>
+      <a class="btn btn-sm nav-get-btn" href="#download" data-i18n="nav_get">Get the app</a>
     </div>
+
+    <!-- Hamburger dropdown menu -->
+    <nav class="ham-menu" id="hamMenu" aria-hidden="true">
+      <a class="ham-link" href="#features" data-i18n="nav_features">🌟 Features</a>
+      <a class="ham-link" href="#prayer" data-i18n="nav_prayer">🕌 Prayer Times</a>
+      <a class="ham-link" href="#quran" data-i18n="nav_quran">📖 Qur'an</a>
+      <a class="ham-link" href="#download" data-i18n="nav_download">📲 Download</a>
+      <div class="ham-divider"></div>
+      <a class="btn ham-cta" href="#download" data-i18n="nav_get">Get the app</a>
+    </nav>
+    <!-- Overlay to close menu -->
+    <div class="ham-overlay" id="hamOverlay" aria-hidden="true"></div>
+
   </header>
 
   <!-- ░░░ HERO ░░░ -->
