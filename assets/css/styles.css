@@ -142,6 +142,8 @@ body[dir=rtl] .lang-toggle .lang-ar{color:var(--green)}
 .store-badge span{display:flex;flex-direction:column;line-height:1.15;text-align:left}
 .store-badge small{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .store-badge b{font-size:16px;font-weight:600}
+.store-badge--soon{opacity:.55;cursor:default;pointer-events:none;position:relative}
+.store-badge--soon::after{content:'Coming Soon';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(6,15,10,.7);border-radius:13px;color:var(--gold)}
 
 .hero-meta{display:flex;gap:clamp(18px,4vw,46px);flex-wrap:wrap;justify-content:center;margin-top:18px}
 .hero-meta div{display:flex;flex-direction:column;align-items:center}
