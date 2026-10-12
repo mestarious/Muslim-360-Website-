@@ -101,6 +101,8 @@
   halo.scale.setScalar(12); halo.position.z = -2.5; root.add(halo);
 
   mark.position.x = -0.25;
+  /* on narrow screens shift scene down so crescent sits lower in canvas, removing top dead space */
+  root.position.y = window.innerWidth < 681 ? -1.0 : 0;
 
   // ---- tilted orbit ring with travelling gems ----
   var orbit = new THREE.Group();

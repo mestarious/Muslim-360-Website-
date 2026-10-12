@@ -152,8 +152,8 @@ body[dir=rtl] .lang-toggle .lang-ar{color:var(--green)}
 
 /* On mobile: pack everything into one viewport so download is visible without scrolling */
 @media(max-width:680px){
-  .hero{padding:72px 16px 20px;min-height:100svh;justify-content:flex-start}
-  .hero-inner{gap:10px;padding-top:4px}
+  .hero{padding:64px 16px 16px;min-height:100svh;justify-content:flex-start}
+  .hero-inner{gap:8px;padding-top:0}
 }
 
 /* starry night sky */
@@ -196,7 +196,13 @@ body[dir=rtl] .lang-toggle .lang-ar{color:var(--green)}
   filter:drop-shadow(0 0 30px rgba(5,155,82,.6));animation:float 5s ease-in-out infinite}
 
 @media(max-width:680px){
-  .hero-stage{height:clamp(150px,22vh,200px)}
+  .hero-stage{
+    height:clamp(160px,24vh,210px);
+    /* clip empty canvas space at the top — crescent sits in lower 80% of canvas */
+    overflow:hidden;
+    clip-path:inset(12% 0 0 0);
+    margin-top:-12%; /* compensate layout so clipped area doesn't leave a gap */
+  }
   .hero-title{font-size:clamp(30px,8.5vw,44px)}
   .hero-sub{font-size:14px;line-height:1.55;max-width:92vw}
   .hero-badge{font-size:12px;padding:6px 13px}
