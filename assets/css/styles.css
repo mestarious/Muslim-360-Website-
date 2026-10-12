@@ -292,6 +292,21 @@ a.store-badge{border-color:rgba(5,155,82,.35)}
 .qt-label{font-size:18px;font-weight:700;margin:0 0 16px;color:#fff}
 .qt-sub{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--green);margin-bottom:12px}
+.reciter-group{border:none;background:none;margin-top:20px}
+.reciter-group:first-of-type{margin-top:0}
+.reciter-group summary.qt-sub{
+  cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;background:rgba(5,155,82,.07);border:1px solid rgba(5,155,82,.2);
+  border-radius:10px;transition:.2s;user-select:none}
+.reciter-group summary.qt-sub::-webkit-details-marker{display:none}
+.reciter-group summary.qt-sub::after{content:'▼';font-size:10px;transition:transform .25s}
+.reciter-group[open] summary.qt-sub::after{transform:rotate(-180deg)}
+.reciter-group[open] summary.qt-sub{border-radius:10px 10px 0 0;background:rgba(5,155,82,.12)}
+.reciter-group summary.qt-sub:hover{background:rgba(5,155,82,.14)}
+.reciter-group .reciter-grid{padding-top:12px}
+.reciter-group.warsh-group summary.qt-sub{color:var(--gold);background:rgba(250,199,117,.07);border-color:rgba(250,199,117,.2)}
+.reciter-group.warsh-group[open] summary.qt-sub{background:rgba(250,199,117,.12)}
+.reciter-group.warsh-group summary.qt-sub:hover{background:rgba(250,199,117,.14)}
 
 .reciter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
 .reciter-card{display:grid;grid-template-columns:38px 1fr;column-gap:12px;align-items:center;background:rgba(255,255,255,.03);
