@@ -8,9 +8,9 @@ It is based on the [Muslim360 app repository](https://github.com/mestarious/Musl
 
 ## Highlights
 
-- **3D WebGL hero** built with [three.js](https://threejs.org/) — a glowing extruded
-  crescent + star, an orbiting field of stars, a wireframe Kaaba, a deep starfield and
-  live mouse-parallax camera.
+- **3D WebGL hero** built with [three.js](https://threejs.org/) — an extruded crescent +
+  star floating above the headline, with a tilted orbit ring, travelling gems, sparkles,
+  pointer parallax and a CSS starry-sky backdrop (SVG fallback when WebGL is unavailable).
 - **3D tilt feature cards** for all 20 Islamic tools (Prayer Times, Qibla, Quran, Hadith,
   Dhikr, Zakat, Hajj & Umrah guides, 99 Names, Ramadan mode, and more).
 - **3D CSS phone mockups** showcasing the Prayer Times and Qur'an screens.

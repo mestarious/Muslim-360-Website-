@@ -61,10 +61,19 @@
 
   <!-- ░░░ HERO ░░░ -->
   <section class="hero" id="top">
-    <canvas id="scene"></canvas>
-    <div class="hero-glow"></div>
+    <div class="hero-sky" aria-hidden="true"><i class="stars s1"></i><i class="stars s2"></i><i class="stars s3"></i></div>
+    <div class="hero-aurora" aria-hidden="true"></div>
 
     <div class="hero-inner">
+      <div class="hero-stage" aria-hidden="true">
+        <div class="stage-halo"></div>
+        <canvas id="scene"></canvas>
+        <svg class="stage-fallback" viewBox="0 0 64 64">
+          <path d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
+          <path class="nav-star" d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
+        </svg>
+      </div>
+
       <div class="hero-badge" data-reveal>
         <span class="dot"></span>
         <span data-i18n="hero_badge">Discipline · Growth · Faith — all in one app</span>
@@ -99,6 +108,7 @@
         <div><b>2</b><span data-i18n="meta_lang">Languages · AR/EN</span></div>
       </div>
     </div>
+
 
     <a class="scroll-hint" href="#features" aria-label="Scroll to features">
       <span data-i18n="scroll">Explore</span>
