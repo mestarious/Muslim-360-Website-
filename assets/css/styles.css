@@ -296,6 +296,34 @@ body[dir=rtl] .lang-toggle .lang-ar{color:var(--green)}
 .download h2{font-size:clamp(28px,4.6vw,48px);font-weight:700}
 .download p{color:var(--muted);font-size:17px;margin:0 0 10px}
 
+/* ============================================================ FEATURE MODAL */
+.feat-modal{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.feat-modal.open{opacity:1;pointer-events:all}
+.feat-modal-backdrop{position:absolute;inset:0;background:rgba(4,10,7,.88);backdrop-filter:blur(14px)}
+.feat-modal-inner{position:relative;z-index:1;
+  transform:scale(.92) translateY(24px);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.feat-modal.open .feat-modal-inner{transform:none}
+.feat-modal-close{position:absolute;top:-46px;right:0;width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;font-size:16px;
+  cursor:pointer;display:grid;place-items:center;transition:.2s;z-index:2}
+.feat-modal-close:hover{background:rgba(255,255,255,.15)}
+/* simple feature card */
+.feat-modal-card{width:min(380px,88vw);background:var(--ink-2);border:1px solid var(--line);
+  border-radius:24px;padding:40px 36px 36px;text-align:center;
+  box-shadow:0 0 80px rgba(5,155,82,.12)}
+.fmc-icon{width:80px;height:80px;border-radius:22px;font-size:36px;
+  display:grid;place-items:center;margin:0 auto 22px}
+.fmc-name{font-size:clamp(22px,5vw,30px);font-weight:700;color:#fff;margin:0 0 12px;line-height:1.15}
+.fmc-desc{font-size:15px;color:var(--muted);line-height:1.65;margin:0 0 20px}
+.fmc-ar{font-family:var(--ar);font-size:18px;color:var(--muted-2);direction:rtl}
+
+/* ── nav floating 3D mark ── */
+@keyframes nav-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.06)}}
+@keyframes nav-star-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.nav-logo{animation:nav-float 3.4s ease-in-out infinite}
+.nav-star{transform-box:fill-box;transform-origin:center;animation:nav-star-spin 5s linear infinite}
+
 /* ============================================================ FOOTER */
 .footer{border-top:1px solid var(--line);text-align:center;padding:50px 20px 60px;
   display:flex;flex-direction:column;align-items:center;gap:12px;background:var(--ink-2)}

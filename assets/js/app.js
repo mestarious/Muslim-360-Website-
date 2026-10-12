@@ -191,6 +191,45 @@
     if (saved === 'ar') applyLang('ar');
   } catch (e) {}
 
+  /* ---- feature modal ---- */
+  (function () {
+    var modal = document.getElementById('feat-modal');
+    var card = document.getElementById('modalCard');
+    if (!modal || !card) return;
+
+    function openModal(feature) {
+      card.innerHTML =
+        '<div class="fmc-icon" style="background:' + hex2rgba(feature.c, 0.14) + ';border:1px solid ' + hex2rgba(feature.c, 0.35) + '">' + feature.e + '</div>' +
+        '<h2 class="fmc-name">' + feature.en + '</h2>' +
+        '<p class="fmc-desc">' + feature.es + '</p>' +
+        '<div class="fmc-ar">' + feature.ar + '</div>';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalBackdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.querySelectorAll('.feat-card').forEach(function (el) {
+          var h3 = el.querySelector('h3');
+          if (!h3) return;
+          var en = h3.getAttribute('data-en') || h3.textContent;
+          var feature = FEATURES.filter(function (f) { return f.en === en; })[0];
+          if (!feature) return;
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function () { openModal(feature); });
+        });
+      });
+    });
+  })();
+
   /* ---- year + boot splash ---- */
   var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
   window.addEventListener('load', function () {

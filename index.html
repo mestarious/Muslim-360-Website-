@@ -37,8 +37,8 @@
     <a class="nav-brand" href="#top" aria-label="Muslim 360 home">
       <span class="nav-logo">
         <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
-          <path d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
-          <path d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
+          <path class="nav-crescent" d="M44 32a16 16 0 1 1-9.4-14.6A12.5 12.5 0 1 0 44 32Z" fill="#059B52"/>
+          <path class="nav-star" d="M48 20l1.9 4.1 4.1 1.9-4.1 1.9L48 32l-1.9-4.2-4.1-1.9 4.1-1.9L48 20Z" fill="#FAC775"/>
         </svg>
       </span>
       <span class="nav-name">MUSLIM <b>360</b></span>
@@ -366,6 +366,15 @@
     <p class="foot-tag" data-i18n="foot_tag">Your daily companion for prayer, Qur'an and remembrance.</p>
     <p class="foot-copy">© <span id="year"></span> Muslim 360 · <span data-i18n="foot_made">Made with ihsan</span></p>
   </footer>
+
+  <!-- ░░░ FEATURE MODAL ░░░ -->
+  <div id="feat-modal" class="feat-modal" role="dialog" aria-modal="true" aria-label="Feature preview">
+    <div class="feat-modal-backdrop" id="modalBackdrop"></div>
+    <div class="feat-modal-inner">
+      <button class="feat-modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="feat-modal-card" id="modalCard"></div>
+    </div>
+  </div>
 
   <script src="assets/js/vendor/three.min.js"></script>
   <script src="assets/js/scene.js"></script>
