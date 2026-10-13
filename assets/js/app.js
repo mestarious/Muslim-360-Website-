@@ -315,6 +315,43 @@
     });
   })();
 
+  /* ---- cinematic layer: scroll progress, hero depth, cursor spotlight, stagger ---- */
+  (function () {
+    var bar = document.getElementById('scrollBar');
+    var spot = document.getElementById('spot');
+    var inner = document.querySelector('.hero-inner');
+    var rays = document.querySelector('.hero-rays');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ticking = false;
+
+    document.querySelectorAll('.feat-card').forEach(function (c, i) { c.style.setProperty('--i', i % 8); });
+
+    function onScroll() {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+        if (bar) bar.style.setProperty('--p', h > 0 ? (y / h).toFixed(4) : 0);
+        if (!reduce && inner && y < window.innerHeight * 1.2) {
+          var k = Math.min(y / window.innerHeight, 1);
+          inner.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0) scale(' + (1 - k * 0.06).toFixed(3) + ')';
+          inner.style.opacity = (1 - k * 0.85).toFixed(3);
+          if (rays) rays.style.transform = 'translateX(-50%) translateY(' + (y * 0.3).toFixed(1) + 'px)';
+        }
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    if (spot && window.matchMedia('(hover:hover)').matches) {
+      window.addEventListener('pointermove', function (e) {
+        spot.style.setProperty('--sx', e.clientX + 'px');
+        spot.style.setProperty('--sy', e.clientY + 'px');
+        spot.classList.add('on');
+      }, { passive: true });
+    }
+  })();
+
   /* ---- hamburger menu ---- */
   (function () {
     var hamBtn = document.getElementById('hamBtn');

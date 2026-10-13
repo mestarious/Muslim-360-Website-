@@ -141,6 +141,26 @@
   var sparks = new THREE.Points(sparkGeo, sparkMat);
   root.add(sparks);
 
+  // ---- drifting dust (depth layer) ----
+  var DN = 90, dpos = new Float32Array(DN * 3);
+  for (var q = 0; q < DN; q++) {
+    dpos[q * 3] = (Math.random() - 0.5) * 22;
+    dpos[q * 3 + 1] = (Math.random() - 0.5) * 12;
+    dpos[q * 3 + 2] = Math.random() * 10 - 3;
+  }
+  var dustGeo = new THREE.BufferGeometry();
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dpos, 3));
+  var dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({
+    map: glowTex, color: GOLD, size: 0.14, transparent: true, opacity: 0.55,
+    blending: THREE.AdditiveBlending, depthWrite: false }));
+  scene.add(dust);
+
+  // scroll progress through the hero (0 top → 1 gone) drives a slow camera dolly
+  var scrollP = 0;
+  window.addEventListener('scroll', function () {
+    scrollP = Math.min(Math.max(window.scrollY / Math.max(stage.offsetHeight * 2.2, 1), 0), 1);
+  }, { passive: true });
+
   // ---- interaction ----
   var tx = 0, ty = 0, mx = 0, my = 0;
   window.addEventListener('pointermove', function (e) {
@@ -189,6 +209,12 @@
 
     sparks.rotation.y = t * 0.04;
     sparkMat.opacity = 0.6 + Math.sin(t * 1.3) * 0.2;
+
+    dust.rotation.y = t * 0.03;
+    dust.position.y = Math.sin(t * 0.3) * 0.3 + scrollP * 2;
+    mark.rotation.y += scrollP * 1.6;
+    root.position.z = scrollP * 4;
+    root.rotation.x = scrollP * 0.35;
 
     sweep.position.set(Math.cos(t * 0.7) * 6, Math.sin(t * 0.5) * 3, 6);
 
