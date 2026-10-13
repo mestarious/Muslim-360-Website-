@@ -106,8 +106,8 @@ body::after{
   position:fixed;top:0;left:0;width:min(280px,80vw);height:100dvh;
   background:rgba(6,12,8,.96);backdrop-filter:blur(20px);
   border-right:1px solid var(--line);
-  flex-direction:column;gap:4px;padding:80px 20px 32px;
-  z-index:99;
+  flex-direction:column;justify-content:flex-start;gap:4px;padding:80px 20px 32px;
+  z-index:99;overflow-y:auto;
   transform:translateX(-100%);transition:transform .32s cubic-bezier(.25,.46,.45,.94);
 }
 .ham-menu.open{transform:translateX(0)}
@@ -559,12 +559,70 @@ a.store-badge{border-color:rgba(5,155,82,.35)}
 [data-reveal].in{opacity:1;transform:none}
 
 /* ============================================================ RTL */
-body[dir=rtl]{font-family:var(--ar),var(--font)}
+body[dir=rtl]{font-family:var(--ar),var(--font);direction:rtl}
+
+/* RTL nav */
+body[dir=rtl] .nav-links{margin-left:0;margin-right:8px}
+body[dir=rtl] .nav-brand{flex-direction:row-reverse}
+
+/* RTL hamburger — drawer slides from right */
+body[dir=rtl] .ham-menu{
+  left:auto;right:0;
+  border-right:none;border-left:1px solid var(--line);
+  transform:translateX(100%);
+  text-align:right;direction:rtl;
+}
+body[dir=rtl] .ham-menu.open{transform:translateX(0)}
+body[dir=rtl] .ham-link{text-align:right;justify-content:flex-start;direction:rtl;font-size:17px}
+body[dir=rtl] .ham-cta{direction:rtl}
+
+/* RTL mobile nav — ham button goes to right, lang toggle stays visible left */
+@media(max-width:720px){
+  body[dir=rtl] .nav{flex-direction:row-reverse}
+  body[dir=rtl] .nav-actions{margin-left:0;margin-right:0}
+  body[dir=rtl] .nav-brand{
+    position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+  }
+}
+
+/* RTL tick list */
 body[dir=rtl] .ticks li{padding-left:0;padding-right:32px}
 body[dir=rtl] .ticks li::before{left:auto;right:0}
 body[dir=rtl] .ticks li::after{left:auto;right:7px}
+
+/* RTL store badges */
+body[dir=rtl] .store-badge{flex-direction:row-reverse}
 body[dir=rtl] .store-badge span{text-align:right}
-body[dir=rtl] .nav-links{margin-left:0;margin-right:8px}
+
+/* RTL section heads — keep centered for hero, right-align for body sections */
+body[dir=rtl] .section-head{text-align:center}
+body[dir=rtl] .eyebrow{direction:rtl}
+body[dir=rtl] .hero-inner{text-align:center;direction:rtl}
+
+/* RTL tab switcher — keep everything centered, phone must not overflow */
+body[dir=rtl] .atp-wrap{direction:rtl;align-items:center}
+body[dir=rtl] .atp-switcher{justify-content:center;flex-direction:row-reverse;flex-wrap:wrap}
+body[dir=rtl] .atp-phone-wrap{direction:ltr;display:flex;justify-content:center;width:100%}
+body[dir=rtl] .atp-phone{margin:0 auto}
+body[dir=rtl] .phone-screen{direction:ltr}
+
+/* RTL feature cards */
+body[dir=rtl] .feat-card{text-align:right}
+
+/* RTL phone mockup text */
+body[dir=rtl] .phone,.phone-screen{direction:ltr} /* phone content stays LTR like real app */
+
+/* RTL footer / download section */
+body[dir=rtl] .dl-block{text-align:right}
+body[dir=rtl] .hero-cta{flex-direction:column;align-items:center}
+
+/* RTL stats */
+body[dir=rtl] .hero-meta{direction:rtl}
+
+/* RTL modal */
+body[dir=rtl] .feat-modal-copy{text-align:right}
+body[dir=rtl] .feat-modal-title{text-align:right}
 
 /* ============================================================ RESPONSIVE */
 @media(max-width:960px){
