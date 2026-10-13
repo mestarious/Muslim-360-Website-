@@ -253,6 +253,7 @@
     }
 
     function startAuto() {
+      clearInterval(autoTimer);
       autoTimer = setInterval(function () {
         current = (current + 1) % tabs.length;
         setTab(tabs[current], false);
@@ -350,6 +351,63 @@
         spot.classList.add('on');
       }, { passive: true });
     }
+  })();
+
+  /* ---- live motion: card shine, staggered screens, ticking timers & counters ---- */
+  (function () {
+    document.querySelectorAll('.feat-card').forEach(function (c) {
+      var sh = document.createElement('span'); sh.className = 'shine'; sh.setAttribute('aria-hidden', 'true'); c.appendChild(sh);
+    });
+
+    var timers = new WeakMap();
+    function pad(n, w) { n = String(n); while (n.length < w) n = '0' + n; return n; }
+    function clock(b) {
+      var txt = b.textContent.trim();
+      if (!/^\d+(:\d\d)+$/.test(txt)) return null;
+      var parts = txt.split(':').map(Number), w = txt.split(':')[0].length;
+      var t = parts.reduce(function (a, v) { return a * 60 + v; }, 0);
+      return function () {
+        t = t > 0 ? t - 1 : 0;
+        var out = [], n = parts.length, v = t;
+        for (var i = n - 1; i >= 0; i--) { out[i] = i === 0 ? pad(v, w) : pad(v % 60, 2); v = Math.floor(v / 60); }
+        b.textContent = out.join(':');
+      };
+    }
+
+    function hydrate(el) {
+      if (timers.has(el)) { clearInterval(timers.get(el)); timers.delete(el); }
+      var ms = el.querySelector('.ms'); if (!ms) return;
+      Array.prototype.forEach.call(ms.children, function (c, i) { c.style.setProperty('--k', i); });
+      el.querySelectorAll('.ms-tool,.ms-name-cell').forEach(function (c, i) { c.style.setProperty('--k', i); });
+      el.querySelectorAll('.ms-salah-dot,.ms-cal-day').forEach(function (c, i) { c.style.setProperty('--d', i); });
+
+      var jobs = [];
+      el.querySelectorAll('.ms-green-card b,.ms-ramadan-card b,.ms-blocker-timer b').forEach(function (b) {
+        var f = clock(b); if (f) jobs.push({ every: 1000, last: 0, run: f });
+      });
+      var dh = el.querySelector('[style*="width:130px"] b');
+      if (dh) {
+        dh.parentNode.classList.add('ms-dhikr-ring');
+        var n = parseInt(dh.textContent, 10) || 0;
+        jobs.push({ every: 1300, last: 0, run: function () {
+          n = n >= 100 ? 0 : n + 1; dh.textContent = n;
+          dh.classList.remove('num-bump'); void dh.offsetWidth; dh.classList.add('num-bump');
+        } });
+      }
+      if (!jobs.length) return;
+      var tick = 0;
+      timers.set(el, setInterval(function () {
+        if (!el.offsetParent) return;
+        tick += 100;
+        jobs.forEach(function (j) { if (tick - j.last >= j.every) { j.last = tick; j.run(); } });
+      }, 100));
+    }
+
+    ['atpScreen', 'modalScreen'].forEach(function (id) {
+      var el = document.getElementById(id); if (!el) return;
+      new MutationObserver(function () { hydrate(el); }).observe(el, { childList: true });
+      hydrate(el);
+    });
   })();
 
   /* ---- hamburger menu ---- */
